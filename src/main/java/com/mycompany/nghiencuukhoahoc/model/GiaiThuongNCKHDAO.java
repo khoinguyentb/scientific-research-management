@@ -21,6 +21,7 @@ public class GiaiThuongNCKHDAO {
     public GiaiThuongNCKHDAO() {
         giaiThuongNCKHs = new ArrayList<>();
         fileUtils = new FileUtils();
+        readNCKH();
     }
     
     public void readNCKH(){

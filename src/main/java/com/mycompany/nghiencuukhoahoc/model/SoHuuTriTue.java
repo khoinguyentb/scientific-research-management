@@ -14,7 +14,7 @@ public class SoHuuTriTue implements Serializable{
     
     private String tenSHTT;
     private int maSo;
-    private String loại;
+    private String loai;
     private String chuSoHuuDonVi;
     private String linhVuc;
     private int namCap;
@@ -26,10 +26,10 @@ public class SoHuuTriTue implements Serializable{
 
     
     
-    public SoHuuTriTue(String tenSHTT, int maSo, String loại, String chuSoHuuDonVi, String linhVuc, int namCap, String noiCap, String xacNhan) {
+    public SoHuuTriTue(String tenSHTT, int maSo, String loai, String chuSoHuuDonVi, String linhVuc, int namCap, String noiCap, String xacNhan) {
         this.tenSHTT = tenSHTT;
         this.maSo = maSo;
-        this.loại = loại;
+        this.loai = loai;
         this.chuSoHuuDonVi = chuSoHuuDonVi;
         this.linhVuc = linhVuc;
         this.namCap = namCap;
@@ -53,12 +53,12 @@ public class SoHuuTriTue implements Serializable{
         this.maSo = maSo;
     }
 
-    public String getLoại() {
-        return loại;
+    public String getLoai() {
+        return loai;
     }
 
-    public void setLoại(String loại) {
-        this.loại = loại;
+    public void setLoai(String loai) {
+        this.loai = loai;
     }
 
     public String getChuSoHuuDonVi() {

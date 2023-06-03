@@ -40,7 +40,9 @@ public class NghienCuuKhoaHoc {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                MainFrame frame = new MainFrame();
+                frame.setVisible(true);
+                
             }
         });
     }
