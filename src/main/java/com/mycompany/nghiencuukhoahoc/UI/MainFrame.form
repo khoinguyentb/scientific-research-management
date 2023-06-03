@@ -52,6 +52,8 @@
                           <Component id="txtTrangThai" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="BtnThem" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -85,7 +87,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtXacNhan" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
-                      <Component id="BtnThem" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="BtnThem" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -265,6 +270,17 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="btnUpdate">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -273,7 +289,7 @@
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
-          <Rectangle value="[0, 0, 500, 480]"/>
+          <Rectangle value="[0, 0, 650, 450]"/>
         </Property>
         <Property name="modal" type="boolean" value="true"/>
       </Properties>
@@ -324,6 +340,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnUpdateNCKH" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAddNCKH" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -358,7 +376,10 @@
                           <Component id="txtXacNhanNCKH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="132" max="32767" attributes="0"/>
-                      <Component id="btnAddNCKH" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAddNCKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUpdateNCKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -536,6 +557,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddNCKHActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnUpdateNCKH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateNCKHActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -912,6 +944,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -939,7 +974,7 @@
                   <Font name="Times New Roman" size="24" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Khoa H&#x1ecd;c C&#xf4;ng Ngh&#x1ec7;"/>
+                <Property name="text" type="java.lang.String" value="Gi&#x1ea3;i Th&#x1b0;&#x1edf;ng Nghi&#xea;n C&#x1ee9;u Khoa H&#x1ecd;c"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -980,7 +1015,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnAddKHCN" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnThemNCKH" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="lbSeach1" min="-2" pref="62" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1007,7 +1042,7 @@
                               </Group>
                               <EmptySpace pref="20" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAddKHCN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnThemNCKH" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtSeachKHCN" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbSeach1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1043,7 +1078,7 @@
                         <Property name="autoscrolls" type="boolean" value="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnAddKHCN">
+                    <Component class="javax.swing.JButton" name="btnThemNCKH">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1054,7 +1089,7 @@
                         <Property name="text" type="java.lang.String" value="Th&#xea;m m&#x1edb;i"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddKHCNActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemNCKHActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtSeachKHCN">
@@ -1160,6 +1195,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaNCKhActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

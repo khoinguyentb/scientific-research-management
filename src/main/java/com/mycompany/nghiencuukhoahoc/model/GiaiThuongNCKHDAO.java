@@ -54,4 +54,13 @@ public class GiaiThuongNCKHDAO {
         return giaiThuongNCKHs;
     }
     
+    public GiaiThuongNCKH getGiaiThuongNCKH(String ten){
+        for(int i = 0 ; i < giaiThuongNCKHs.size() ; i++){
+            if(giaiThuongNCKHs.get(i).getTenGiai().equals(ten)){
+                return giaiThuongNCKHs.get(i);
+            }
+        }
+        return null;
+    }
+    
 }

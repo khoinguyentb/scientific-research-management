@@ -117,6 +117,24 @@ public class MainFrame extends javax.swing.JFrame {
         return null;
     }
     
+    public void UpdateSoHuuTriTue(SoHuuTriTue s){
+        if(!"".equals(txtNameSHTT.getText()) || !"".equals(txtDonViSoHuu.getText())
+                || !"".equals(txtLinhVuc.getText()) || !"".equals(txtLoai.getText()) || !"".equals(txtMaSo.getText())
+                || !"".equals(txtNamCap.getText()) || !"".equals(txtNoiCap.getText()) || !"".equals(txtTrangThai.getText()) || !"".equals(txtXacNhan.getText())){
+            s.setTenSHTT(txtNameSHTT.getText().trim());
+            s.setMaSo(Integer.parseInt(txtMaSo.getText().trim()));
+            s.setLoai(txtLoai.getText().trim());
+            s.setLinhVuc(txtLinhVuc.getText().trim());
+            s.setChuSoHuuDonVi(txtDonViSoHuu.getText().trim());
+            s.setNamCap(Integer.parseInt(txtNamCap.getText().trim()));
+            s.setNoiCap(txtNoiCap.getText().trim());
+            s.setTrangThai(txtTrangThai.getText().trim());
+            s.setXacNhan(txtXacNhan.getText().trim());
+            
+        }else ShowMessage("Không Được Để Trống!");
+        
+    }
+    
     public GiaiThuongNCKH setGiaiThuongNCKH(){
         GiaiThuongNCKH giaiThuongNCKH = new GiaiThuongNCKH();
         if(!"".equals(txtCapGiayKhenNCKH.getText()) || !"".equals(txtDatGiaiNCKH.getText())
@@ -135,6 +153,25 @@ public class MainFrame extends javax.swing.JFrame {
             return giaiThuongNCKH;
         }
         return null;
+    }
+    
+    public void UpdateNCKH(GiaiThuongNCKH giaiThuongNCKH){
+        if(!"".equals(txtCapGiayKhenNCKH.getText()) || !"".equals(txtDatGiaiNCKH.getText())
+                || !"".equals(txtDonViDuocCapNCKH.getText()) || !"".equals(txtLinhVucNCKH.getText()) || !"".equals(txtNamNCKH.getText())
+                || !"".equals(txtNguoiDuocCapNCKH.getText()) || !"".equals(txtTenGiaiNCKH.getText()) || !"".equals(txtTrangThaiNCKH.getText())
+                || !"".equals(txtXacNhanNCKH.getText())){
+            giaiThuongNCKH.setCapGiayKhen(txtCapGiayKhenNCKH.getText().trim());
+            giaiThuongNCKH.setDatGiai(txtDatGiaiNCKH.getText().trim());
+            giaiThuongNCKH.setDonViDuocCap(txtDonViDuocCapNCKH.getText().trim());
+            giaiThuongNCKH.setLinhVuc(txtLinhVucNCKH.getText().trim());
+            giaiThuongNCKH.setNam(Integer.parseInt(txtNamNCKH.getText().trim()));
+            giaiThuongNCKH.setNguoiDuocCap(txtNguoiDuocCapNCKH.getText().trim());
+            giaiThuongNCKH.setTenGiai(txtTenGiaiNCKH.getText().trim());
+            giaiThuongNCKH.setTrangThai(txtTrangThaiNCKH.getText().trim());
+            giaiThuongNCKH.setXacNhan(txtXacNhanNCKH.getText().trim());
+            
+        }
+        
     }
     
     private void excute(){
@@ -169,6 +206,7 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 panelKHCN.setVisible(false);
                 panelSHTT.setVisible(true);
+                
             }
         });
         MenuItem subMenu26 = new MenuItem(iconBookmark,"Trường đã duyệt",null);
@@ -189,6 +227,8 @@ public class MainFrame extends javax.swing.JFrame {
         MenuItem menuGiaiThuong = new MenuItem(iconBookmark, "Giải Thưởng Khoa Học Công Nghệ",null,subMenu16,subMenu27,subMenu37,subMenu47);
         addMenu(menuBaiBaoKH,menuBaocaoKH,menuBienSoanSach,menuChuyenGiaoKHCN,menuGiaiThuong,menuKhoaHocCongNghe,menuSoHuuTriTue);
     }
+    
+    
     
     private void addMenu(MenuItem... menu){
         for(int i = 0 ; i  < menu.length ; i++){
@@ -220,6 +260,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtTrangThai = new javax.swing.JTextField();
         BtnThem = new javax.swing.JButton();
         txtXacNhan = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
         jDialog2 = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -233,6 +274,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtTrangThaiNCKH = new javax.swing.JTextField();
         txtXacNhanNCKH = new javax.swing.JTextField();
         btnAddNCKH = new javax.swing.JButton();
+        btnUpdateNCKH = new javax.swing.JButton();
         panelHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         panelMenu = new javax.swing.JPanel();
@@ -259,7 +301,7 @@ public class MainFrame extends javax.swing.JFrame {
         headerSHTT1 = new javax.swing.JPanel();
         cboKHCN = new javax.swing.JComboBox<>();
         lbDonViKeKhai1 = new javax.swing.JLabel();
-        btnAddKHCN = new javax.swing.JButton();
+        btnThemNCKH = new javax.swing.JButton();
         txtSeachKHCN = new javax.swing.JTextField();
         lbSeach1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -312,6 +354,14 @@ public class MainFrame extends javax.swing.JFrame {
         txtXacNhan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtXacNhan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Xác Nhận", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
 
+        btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnUpdate.setText("Cập nhật");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -334,6 +384,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(txtTrangThai)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnUpdate)
+                        .addGap(18, 18, 18)
                         .addComponent(BtnThem)
                         .addContainerGap())
                     .addComponent(txtXacNhan)))
@@ -361,7 +413,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(BtnThem)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnThem)
+                    .addComponent(btnUpdate))
                 .addGap(34, 34, 34))
         );
 
@@ -377,7 +431,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         jDialog2.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog2.setBounds(new java.awt.Rectangle(0, 0, 500, 480));
+        jDialog2.setBounds(new java.awt.Rectangle(0, 0, 650, 450));
         jDialog2.setModal(true);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -419,6 +473,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnUpdateNCKH.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnUpdateNCKH.setText("Cập Nhật");
+        btnUpdateNCKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateNCKHActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -446,6 +508,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(txtXacNhanNCKH))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnUpdateNCKH)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAddNCKH)))
                 .addContainerGap())
         );
@@ -472,7 +536,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(txtTrangThaiNCKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtXacNhanNCKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                .addComponent(btnAddNCKH)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddNCKH)
+                    .addComponent(btnUpdateNCKH))
                 .addContainerGap())
         );
 
@@ -635,6 +701,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnSua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -668,7 +739,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         titleKHCN.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         titleKHCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleKHCN.setText("Khoa Học Công Nghệ");
+        titleKHCN.setText("Giải Thưởng Nghiên Cứu Khoa Học");
         panelKHCN.add(titleKHCN, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -684,12 +755,12 @@ public class MainFrame extends javax.swing.JFrame {
         lbDonViKeKhai1.setText("Chọn theo đơn vị kê khai :");
         lbDonViKeKhai1.setAutoscrolls(true);
 
-        btnAddKHCN.setBackground(new java.awt.Color(255, 255, 255));
-        btnAddKHCN.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnAddKHCN.setText("Thêm mới");
-        btnAddKHCN.addActionListener(new java.awt.event.ActionListener() {
+        btnThemNCKH.setBackground(new java.awt.Color(255, 255, 255));
+        btnThemNCKH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnThemNCKH.setText("Thêm mới");
+        btnThemNCKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddKHCNActionPerformed(evt);
+                btnThemNCKHActionPerformed(evt);
             }
         });
 
@@ -707,7 +778,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(headerSHTT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerSHTT1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnAddKHCN)
+                        .addComponent(btnThemNCKH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbSeach1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -728,7 +799,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(lbDonViKeKhai1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(headerSHTT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddKHCN)
+                    .addComponent(btnThemNCKH)
                     .addComponent(txtSeachKHCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbSeach1))
                 .addContainerGap())
@@ -764,6 +835,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnSuaNCKh.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnSuaNCKh.setText("Sửa");
+        btnSuaNCKh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaNCKhActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -800,11 +876,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnAddSHTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSHTTActionPerformed
         jDialog1.setVisible(true);
+        btnAddSHTT.setEnabled(true);
+        btnUpdate.setEnabled(false);
+        
     }//GEN-LAST:event_btnAddSHTTActionPerformed
 
-    private void btnAddKHCNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddKHCNActionPerformed
+    private void btnThemNCKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNCKHActionPerformed
         jDialog2.setVisible(true);
-    }//GEN-LAST:event_btnAddKHCNActionPerformed
+        btnAddNCKH.setEnabled(true);
+        btnSuaNCKh.setEnabled(false);
+        
+    }//GEN-LAST:event_btnThemNCKHActionPerformed
 
     private void BtnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnThemActionPerformed
         
@@ -813,7 +895,7 @@ public class MainFrame extends javax.swing.JFrame {
             ShowSoHuuTriTues(soHuuTriTueDAO.getSoHuuTriTues());
             jDialog1.setVisible(false);
         }
-       
+       clearTextSoHuuTriTue();
     }//GEN-LAST:event_BtnThemActionPerformed
 
     private void btnAddNCKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNCKHActionPerformed
@@ -824,7 +906,7 @@ public class MainFrame extends javax.swing.JFrame {
             ShowNCKH(giaiThuongNCKHDAO.getGiaiThuongNCKHs());
             jDialog2.setVisible(false);
         }
-        
+        clearTextNCKH();
     }//GEN-LAST:event_btnAddNCKHActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -847,7 +929,96 @@ public class MainFrame extends javax.swing.JFrame {
        }
         ShowNCKH(giaiThuongNCKHDAO.getGiaiThuongNCKHs());
     }//GEN-LAST:event_btnXoaNCKHActionPerformed
+    int maso;
+    SoHuuTriTue soHuuTriTue;
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        UpdateSoHuuTriTue(soHuuTriTue);
+        soHuuTriTueDAO.UpdateFile();
+        ShowSoHuuTriTues(soHuuTriTueDAO.getSoHuuTriTues());
+        jDialog1.setVisible(false);
+        clearTextSoHuuTriTue();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+    
+    
+    
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        int maso = Integer.parseInt(getMaSoSHTT());
+        soHuuTriTue = soHuuTriTueDAO.getSoHuuTriTue(maso);
+        ShowSoHuuTriTue(soHuuTriTueDAO.getSoHuuTriTue(maso));
+        jDialog1.setVisible(true);
+        btnAddSHTT.setEnabled(false);
+        btnUpdate.setEnabled(true);
+    }//GEN-LAST:event_btnSuaActionPerformed
+    private GiaiThuongNCKH giaiThuongNCKH;
+    private void btnSuaNCKhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNCKhActionPerformed
+        // TODO add your handling code here:
+        String ten = getTenNCKH();
+        giaiThuongNCKH = giaiThuongNCKHDAO.getGiaiThuongNCKH(ten);
+        btnAddNCKH.setEnabled(false);
+        btnUpdateNCKH.setEnabled(true);
+        showGiaiNghienCuuKhoaHoc(giaiThuongNCKH);
+        jDialog2.setVisible(true);
+    }//GEN-LAST:event_btnSuaNCKhActionPerformed
 
+    private void btnUpdateNCKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNCKHActionPerformed
+        // TODO add your handling code here:
+        UpdateNCKH(giaiThuongNCKH);
+        giaiThuongNCKHDAO.UpdateFile();
+        ShowNCKH(giaiThuongNCKHDAO.getGiaiThuongNCKHs());
+        clearTextNCKH();
+        jDialog2.setVisible(false);
+    }//GEN-LAST:event_btnUpdateNCKHActionPerformed
+    
+    public void ShowSoHuuTriTue(SoHuuTriTue s){
+        txtNameSHTT.setText(s.getTenSHTT());
+        txtMaSo.setText(String.valueOf(s.getMaSo()));
+        txtLoai.setText(s.getLoai());
+        txtLinhVuc.setText(s.getLinhVuc());
+        txtNamCap.setText(String.valueOf(s.getNamCap()));
+        txtNoiCap.setText(s.getNoiCap());
+        txtTrangThai.setText(s.getTrangThai());
+        txtDonViSoHuu.setText(s.getChuSoHuuDonVi());
+        txtXacNhan.setText(s.getXacNhan());
+    }
+    
+    public void showGiaiNghienCuuKhoaHoc(GiaiThuongNCKH g){
+        txtTenGiaiNCKH.setText(g.getTenGiai());
+        txtCapGiayKhenNCKH.setText(g.getCapGiayKhen());
+        txtDatGiaiNCKH.setText(g.getDatGiai());
+        txtDonViDuocCapNCKH.setText(g.getDonViDuocCap());
+        txtLinhVucNCKH.setText(g.getLinhVuc());
+        txtNamNCKH.setText(String.valueOf(g.getNam()));
+        txtNguoiDuocCapNCKH.setText(g.getNguoiDuocCap());
+        txtTrangThaiNCKH.setText(g.getTrangThai());
+        txtXacNhanNCKH.setText(g.getXacNhan());
+    }
+    
+    public void clearTextSoHuuTriTue(){
+        txtNameSHTT.setText("");
+        txtMaSo.setText("");
+        txtLoai.setText("");
+        txtLinhVuc.setText("");
+        txtNamCap.setText("");
+        txtNoiCap.setText("");
+        txtTrangThai.setText("");
+        txtDonViSoHuu.setText("");
+        txtXacNhan.setText("");
+    }
+    
+    public void clearTextNCKH(){
+        txtTenGiaiNCKH.setText("");
+        txtCapGiayKhenNCKH.setText("");
+        txtDatGiaiNCKH.setText("");
+        txtDonViDuocCapNCKH.setText("");
+        txtLinhVucNCKH.setText("");
+        txtNamNCKH.setText("");
+        txtNguoiDuocCapNCKH.setText("");
+        txtTrangThaiNCKH.setText("");
+        txtXacNhanNCKH.setText("");
+    }
+    
     public void ShowSoHuuTriTues(List<SoHuuTriTue> s){
         int size = s.size();
         Object[][] objser = new Object[size][10];
@@ -872,10 +1043,6 @@ public class MainFrame extends javax.swing.JFrame {
         int row = tblSHTT.getSelectedRow();
         return tblSHTT.getModel().getValueAt(row, 2).toString();
     }
-    
-
-
-
     
     public void ShowNCKH(List<GiaiThuongNCKH> NC){
         int size = NC.size();
@@ -907,11 +1074,13 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnThem;
-    private javax.swing.JButton btnAddKHCN;
     private javax.swing.JButton btnAddNCKH;
     private javax.swing.JButton btnAddSHTT;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnSuaNCKh;
+    private javax.swing.JButton btnThemNCKH;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpdateNCKH;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaNCKH;
     private javax.swing.JComboBox<String> cboKHCN;

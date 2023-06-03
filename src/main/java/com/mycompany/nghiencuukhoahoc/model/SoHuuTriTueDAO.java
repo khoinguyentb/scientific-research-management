@@ -58,5 +58,15 @@ public class SoHuuTriTueDAO {
         return soHuuTriTues;
     }
     
+    public SoHuuTriTue getSoHuuTriTue(int maso){
+        for(int i = 0 ; i < soHuuTriTues.size() ; i++){
+            SoHuuTriTue soHuuTriTue = soHuuTriTues.get(i);
+            if(soHuuTriTue.getMaSo()== maso){
+                return soHuuTriTue;
+            } 
+        }
+        
+        return  null;
+    }
     
 }
