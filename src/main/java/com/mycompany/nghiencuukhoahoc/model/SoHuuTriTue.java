@@ -19,6 +19,7 @@ public class SoHuuTriTue implements Serializable{
     private String linhVuc;
     private int namCap;
     private String noiCap;
+    private String trangThai;
     private String xacNhan;
 
     public SoHuuTriTue() {
@@ -99,6 +100,14 @@ public class SoHuuTriTue implements Serializable{
 
     public void setXacNhan(String xacNhan) {
         this.xacNhan = xacNhan;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
     
 }

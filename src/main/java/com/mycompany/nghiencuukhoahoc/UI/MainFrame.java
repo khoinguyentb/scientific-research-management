@@ -6,21 +6,16 @@ import com.mycompany.nghiencuukhoahoc.model.GiaiThuongNCKH;
 import com.mycompany.nghiencuukhoahoc.model.GiaiThuongNCKHDAO;
 import com.mycompany.nghiencuukhoahoc.model.SoHuuTriTue;
 import com.mycompany.nghiencuukhoahoc.model.SoHuuTriTueDAO;
-import java.awt.Button;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 /**
  *
@@ -43,8 +38,61 @@ public class MainFrame extends javax.swing.JFrame {
         excute();      
         ShowSoHuuTriTues(soHuuTriTueDAO.getSoHuuTriTues());
         ShowNCKH(giaiThuongNCKHDAO.getGiaiThuongNCKHs());
+        txtSeachSHTT.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                SeachSHTT();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                SeachSHTT();             }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                           }
+        });
+        
+        txtSeachKHCN.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                SeachNCKH();            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                SeachNCKH();      
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+    }
+    
+    public void SeachNCKH(){
+        String txtSeachNCKH = txtSeachKHCN.getText().trim();
+        List<GiaiThuongNCKH> SeachGiaiNCKH = new ArrayList<>();
+        for(int i = 0 ; i < giaiThuongNCKHDAO.getGiaiThuongNCKHs().size(); i++){
+            if(txtSeachNCKH.equals(giaiThuongNCKHDAO.getGiaiThuongNCKHs().get(i).getTenGiai())){
+                SeachGiaiNCKH.add(giaiThuongNCKHDAO.getGiaiThuongNCKHs().get(i));
+            }
+        }
+        ShowNCKH(SeachGiaiNCKH);
     }
 
+    
+    public void SeachSHTT(){
+        String txtSeach = txtSeachSHTT.getText().trim();
+        int maSo = Integer.parseInt(txtSeach);
+        List<SoHuuTriTue> SeachSHTT = new ArrayList<>();
+        for(int  i = 0 ; i < soHuuTriTueDAO.getSoHuuTriTues().size(); i++){
+            if(txtSeach.equals(soHuuTriTueDAO.getSoHuuTriTues().get(i).getTenSHTT()) || maSo == soHuuTriTueDAO.getSoHuuTriTues().get(i).getMaSo()){
+                
+                SeachSHTT.add(soHuuTriTueDAO.getSoHuuTriTues().get(i));
+            }
+        }
+        ShowSoHuuTriTues(SeachSHTT);
+    }
     
     public void ShowMessage(String message){
         JOptionPane.showMessageDialog(this, message);
@@ -54,7 +102,7 @@ public class MainFrame extends javax.swing.JFrame {
         SoHuuTriTue soHuuTriTue = new SoHuuTriTue();
         if(!"".equals(txtNameSHTT.getText()) || !"".equals(txtDonViSoHuu.getText())
                 || !"".equals(txtLinhVuc.getText()) || !"".equals(txtLoai.getText()) || !"".equals(txtMaSo.getText())
-                || !"".equals(txtNamCap.getText()) || !"".equals(txtNoiCap.getText()) || !"".equals(txtXacNhan.getText())){
+                || !"".equals(txtNamCap.getText()) || !"".equals(txtNoiCap.getText()) || !"".equals(txtTrangThai.getText()) || !"".equals(txtXacNhan.getText())){
             soHuuTriTue.setTenSHTT(txtNameSHTT.getText().trim());
             soHuuTriTue.setMaSo(Integer.parseInt(txtMaSo.getText().trim()));
             soHuuTriTue.setLoai(txtLoai.getText().trim());
@@ -62,6 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
             soHuuTriTue.setChuSoHuuDonVi(txtDonViSoHuu.getText().trim());
             soHuuTriTue.setNamCap(Integer.parseInt(txtNamCap.getText().trim()));
             soHuuTriTue.setNoiCap(txtNoiCap.getText().trim());
+            soHuuTriTue.setTrangThai(txtTrangThai.getText().trim());
             soHuuTriTue.setXacNhan(txtXacNhan.getText().trim());
             return soHuuTriTue;
         }else ShowMessage("Không Được Để Trống!");
@@ -152,6 +201,8 @@ public class MainFrame extends javax.swing.JFrame {
         menus.revalidate();
     }
     
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -166,8 +217,9 @@ public class MainFrame extends javax.swing.JFrame {
         txtLinhVuc = new javax.swing.JTextField();
         txtNamCap = new javax.swing.JTextField();
         txtNoiCap = new javax.swing.JTextField();
-        txtXacNhan = new javax.swing.JTextField();
+        txtTrangThai = new javax.swing.JTextField();
         BtnThem = new javax.swing.JButton();
+        txtXacNhan = new javax.swing.JTextField();
         jDialog2 = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -246,8 +298,8 @@ public class MainFrame extends javax.swing.JFrame {
         txtNoiCap.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtNoiCap.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Nơi Cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
 
-        txtXacNhan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        txtXacNhan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Xác Nhận", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
+        txtTrangThai.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtTrangThai.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Trạng Thái", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
 
         BtnThem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BtnThem.setText("Thêm");
@@ -256,6 +308,9 @@ public class MainFrame extends javax.swing.JFrame {
                 BtnThemActionPerformed(evt);
             }
         });
+
+        txtXacNhan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtXacNhan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Xác Nhận", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -276,11 +331,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(txtNamCap, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtNoiCap))
+                    .addComponent(txtTrangThai)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtnThem)
+                        .addContainerGap())
                     .addComponent(txtXacNhan)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnThem)
-                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,10 +357,12 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(txtNamCap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoiCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(BtnThem)
-                .addGap(0, 103, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -792,7 +850,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void ShowSoHuuTriTues(List<SoHuuTriTue> s){
         int size = s.size();
-        Object[][] objser = new Object[size][11];
+        Object[][] objser = new Object[size][10];
         for(int i = 0 ; i < size ; i++){
             objser[i][0] = i+1;
             objser[i][1] = s.get(i).getTenSHTT();
@@ -802,7 +860,8 @@ public class MainFrame extends javax.swing.JFrame {
             objser[i][5] = s.get(i).getLinhVuc();
             objser[i][6] = s.get(i).getNamCap();
             objser[i][7] = s.get(i).getNoiCap();
-            objser[i][8] = s.get(i).getXacNhan();
+            objser[i][8] = s.get(i).getTrangThai();
+            objser[i][9] = s.get(i).getXacNhan();
         }
         
         tblSHTT.setModel(new DefaultTableModel(objser,ColumsSHTT));
@@ -903,6 +962,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtSeachKHCN;
     private javax.swing.JTextField txtSeachSHTT;
     private javax.swing.JTextField txtTenGiaiNCKH;
+    private javax.swing.JTextField txtTrangThai;
     private javax.swing.JTextField txtTrangThaiNCKH;
     private javax.swing.JTextField txtXacNhan;
     private javax.swing.JTextField txtXacNhanNCKH;
